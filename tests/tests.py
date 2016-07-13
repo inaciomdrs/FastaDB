@@ -2,7 +2,7 @@
 # TODO - Make the tests run on Jenkins environment
 # import os
 # import unittest
-from FastaDB import fdb
+from FastaDB.FastaDB import FastaDB
 
 
 def CreateDB(self):

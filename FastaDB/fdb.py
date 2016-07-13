@@ -62,13 +62,39 @@ class FastaDB():
 
         return self.mount_fdb_file(fdb_registers)
 
+    def GenBankToFDB(self, genbankfile):
+        fdb_registers = []
+        content = open(genbankfile)
+
+        sequences = parse(content, 'genbank')
+
+        for sequence in sequences:
+            fdb_register = FDBRegister()
+            fdb_register.filename = genbankfile
+            fdb_register.description = sequence.id
+            fdb_register.gene = str(sequence.seq)
+            fdb_register.geneinfo = sequence.description
+
+            fdb_registers.append(fdb_register)
+
+        content.close()
+
+        return self.mount_fdb_file(fdb_registers)
+
     def ImportFasta(self, fastafile):
         try:
-            return FastaDB().FastaToFDB(fastafile)
+            return self.FastaToFDB(fastafile)
         except ValueError:
             return ValueError
 
-FDB = FastaDB()
-FDB.DB("file3.fdb")
-fdb_file = FDB.ImportFasta("test2.fasta")
-print(fdb_file)
+    def ImportGenBank(self, genbankfile):
+        try:
+            return self.GenBankToFDB(genbankfile)
+        except ValueError:
+            return ValueError
+
+if __name__ == "__main__":
+    FDB = FastaDB()
+    FDB.DB("file3.fdb")
+    fdb_file = FDB.ImportFasta("test2.fasta")
+    print(fdb_file)
