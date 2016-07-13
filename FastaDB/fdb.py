@@ -92,9 +92,3 @@ class FastaDB():
             return self.GenBankToFDB(genbankfile)
         except ValueError:
             return ValueError
-
-if __name__ == "__main__":
-    FDB = FastaDB()
-    FDB.DB("file3.fdb")
-    fdb_file = FDB.ImportFasta("test2.fasta")
-    print(fdb_file)

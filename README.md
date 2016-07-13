@@ -8,9 +8,10 @@ Fasta File archiver for biological gene sequences, exons, introns and proteins t
 The project is going to be used to handle genes, sequences and genetic expressions that are held by the FASTA files nowadays. It will convert the fasta file to a file with a bunch of dicts like this:
 ```
 {
-  'FastaDB':'GENOME.FDB'
-  'gene1':
+  'FastaDB':'FDB-FILE-NAME.FDB'
+  'gene':
 {
+  'id':1,
   'description':'>1:12009-13670',
   'gene':'GTGTCTGACTTCCAGCAACTGCTGGCCTGT...',
   'geneinfo':'From GENOME Project',
@@ -19,8 +20,9 @@ The project is going to be used to handle genes, sequences and genetic expressio
   'user':'vmesel',
   'observations':'Nothing to say'
 },
-'gene2':
+'gene':
 {
+  'id':2,
   'description':'>1:14410-29806',
   'gene':'TCAGTTCTTTATTGATTGGTGTGCCGTTTT...',
   'geneinfo':'From GENOME Project',
@@ -49,3 +51,4 @@ Those operations would be: insert, update, change, create db ...
 
 - Generate a JSON based file(FDB), to handle the sequences
 - Make queries like, SELECT, INSERT and UPDATE to the FastaDB file
+- Make it scrappable in any language available, like a Universal Format
